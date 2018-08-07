@@ -27,8 +27,7 @@ public class Java_sms_httprequest {
 		mailAddressTo.add("pratikdimble2238@gmail.com");
 		mailAddressTo.add("dimble73@gmail.com");
 		InternetAddress[] mailAddress_TO = new InternetAddress[mailAddressTo.size()];
-
-		System.out.println("==> For Loop Example.");
+			
 		for (int i = 0; i < mailAddressTo.size(); i++) {
 			mailAddress_TO[i] = new InternetAddress(mailAddressTo.get(i));
 		}
@@ -45,29 +44,29 @@ public class Java_sms_httprequest {
 				  });
 		
 		String newline =System.getProperty("line.separator"); 
-		String message="Dear Ma’am/Sir,"+newline+""
+		String message="Dear Maâ€™am/Sir,"+newline+""
 					+ "A very good day to you!"+newline+""
 					+ "Did you forget to keep sufficient balance in your bank? "
 		 			+ "These days, with so much going on, it is easy to let something slip. "
-		 			+ "We are yet to receive your current/previous month’s instalment. "
+		 			+ "We are yet to receive your current/previous monthâ€™s instalment. "
 		 			+ "So, please clear your payment today to avoid penal charges. "
 		 			+ "And, if it is already on its way to us."	+newline+""
 		 			+ "kindly accept our sincere thanks."; 
 		
-		 MimeMessage msg = new MimeMessage(session);
+	MimeMessage msg = new MimeMessage(session);
 	      //set message headers
 	      msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
 	      msg.addHeader("format", "flowed");
 	      msg.addHeader("Content-Transfer-Encoding", "8bit");
 	      msg.setFrom(new InternetAddress("email.demoeracal@gmail.com", "NoReply"));
 	      msg.setReplyTo(InternetAddress.parse("no_reply@eracal.com", false));
-	      msg.setSubject("We’re waiting for your FINAL PAYMENT ", "UTF-8");
+	      msg.setSubject("Weâ€™re waiting for your FINAL PAYMENT ", "UTF-8");
 	      msg.setText(message, "UTF-8");
-	      
-         msg.setSentDate(new Date());
-         msg.setRecipients(Message.RecipientType.TO,mailAddress_TO);
+	      msg.setFileName("D:\\userQuery.txt");
+	      msg.setSentDate(new Date());
+              msg.setRecipients(Message.RecipientType.TO,mailAddress_TO);
 	      Transport.send(msg);  
-	    System.out.println("SUCCESS"+mailAddressTo.size());
+	    System.out.println("Mail Has Been Sent to "+mailAddressTo.size()+" Recipients...");
 	}
 	catch(Exception ex){
 		System.out.println("ERROR");
